@@ -1,0 +1,42 @@
+<%@ page import="java.sql.*" %>
+<%@ page import="files.DBConnection" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Students</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+</head>
+<body>
+    <h2>All Students</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th><th>Name</th><th>Email</th><th>Course</th><th>Actions</th>
+        </tr>
+        <%
+            try {
+                Connection conn = DBConnection.getConnection();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM students");
+
+                while (rs.next()) {
+        %>
+        <tr>
+            <td><%=rs.getInt("id")%></td>
+            <td><%=rs.getString("name")%></td>
+            <td><%=rs.getString("email")%></td>
+            <td><%=rs.getString("course")%></td>
+            <td>
+                <a href="edit-student.jsp?id=<%=rs.getInt("id")%>">Edit</a> |
+                <a href="deleteStudent?id=<%=rs.getInt("id")%>">Delete</a>
+            </td>
+        </tr>
+        <%
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        %>
+    </table>
+</body>
+</html>
