@@ -1,18 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-
-	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Student</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-    <h2>Add New Student</h2>
-    <form action="addStudent" method="post">
-        Name: <input type="text" name="name" required><br><br>
-        Email: <input type="email" name="email" required><br><br>
-        Course: <input type="text" name="course" required><br><br>
-        <input type="submit" value="Add Student">
-    </form>
+    <div class="form-container">
+        <a href="index.jsp" class="home-button">Home</a>
+        <h2>Add New Student</h2>
+        <form action="addStudent" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="course">Course</label>
+                <input type="text" name="course" id="course" required>
+            </div>
+            <button type="submit">Add Student</button>
+        </form>
+    </div>
 </body>
 </html>
